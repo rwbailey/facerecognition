@@ -5,7 +5,12 @@ import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
+import Clarifai from 'clarifai';
 import './App.css';
+
+const app = new Clarifai.App({
+  apiKey: 'a71a0a075dae44f3818027e1552c3cd6'
+ });
 
 const particleOptions = {
   particles: {
@@ -33,7 +38,14 @@ class App extends Component {
   }
 
   onButtonSubmit = () => {
-    console.log('click')
+    app.workflow.predict('face', "https://www.coatscareers.com/wp-content/uploads/2017/04/yashmiin-image.jpg").then(
+      function(response){
+        console.log(response)
+      },
+      function(err){
+        console.log(err)
+      }
+  );
   }
 
   render() {
@@ -49,8 +61,7 @@ class App extends Component {
           onInputChange={this.onInputChange} 
           onButtonSubmit={this.onButtonSubmit}
         />
-        {/* {
-        <FaceRecognition />} */}
+        {/* <FaceRecognition /> */}
       </div>
     );
   }
