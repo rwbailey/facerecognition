@@ -29,7 +29,7 @@ const Register = ({onRouteChange}) => {
                         />
                     </div>
                     <div className="lh-copy mt3">
-                        <p onClick={() => onRouteChange('signin')} className="f6 link dim black db pointer">Sign in</p>
+                        <p onClick={() => onRouteChange('signin')} className="f6 link dim black db pointer">Register</p>
                     </div>
                 </form>
             </main>
